@@ -86,12 +86,24 @@ const createCrudRoutes = (resourceName) => {
         }
     });
 
+    app.get(`/api/${resourceName}/:id`, (req, res) => {
+        const db = readDb();
+        const items = db[resourceName] || [];
+        const rawId = req.params.id;
+        const item = items.find(i => String(i.id) === String(rawId));
+        if (item) {
+            res.json(item);
+        } else {
+            res.status(404).json({ error: 'Item not found' });
+        }
+    });
+
     app.delete(`/api/${resourceName}/:id`, (req, res) => {
         try {
             const db = readDb();
-            const id = parseInt(req.params.id);
+            const rawId = req.params.id;
             if (db[resourceName]) {
-                db[resourceName] = db[resourceName].filter(item => item.id !== id);
+                db[resourceName] = db[resourceName].filter(item => String(item.id) !== String(rawId));
                 writeDb(db);
             }
             res.json({ success: true });
@@ -103,7 +115,7 @@ const createCrudRoutes = (resourceName) => {
 };
 
 // Initialize routes for all content types
-['news', 'videos', 'gallery', 'artists', 'awards', 'culture', 'innovation', 'lifestyle'].forEach(resource => {
+['news', 'videos', 'gallery', 'artists', 'awards', 'culture', 'innovation', 'lifestyle', 'featured'].forEach(resource => {
     createCrudRoutes(resource);
 });
 
