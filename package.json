@@ -4,7 +4,7 @@
   "description": "NDGP - National Donor & Government Projects Platform (OTDI) backend API",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "npm run migrate && node src/server.js",
     "dev": "nodemon src/server.js",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
