@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       video_url: { type: DataTypes.STRING, allowNull: true, field: 'video_url' },
       duration: { type: DataTypes.STRING, allowNull: true },
       featured: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+      featuredOrder: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0, field: 'featured_order' },
       date: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     },
     {

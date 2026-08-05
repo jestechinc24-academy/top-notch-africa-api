@@ -3,7 +3,6 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('innovation', [
       {
-        id: 1,
         title: 'New Digital Campaign Tools for Brand Partners',
         category: 'Digital Media',
         badge: 'Featured',
@@ -17,7 +16,6 @@ module.exports = {
         updated_at: new Date(),
       },
       {
-        id: 2,
         title: 'Upgrading Our Production Workflow',
         category: 'Behind the Scenes',
         badge: null,

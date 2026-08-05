@@ -3,7 +3,6 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('artists', [
       {
-        id: 1,
         title: 'Featured Designer: Local Fashion Talent',
         category: 'Fashion',
         badge: 'Featured',
@@ -17,7 +16,6 @@ module.exports = {
         updated_at: new Date(),
       },
       {
-        id: 2,
         title: 'Visual Storyteller Spotlight',
         category: 'Photography',
         badge: null,
